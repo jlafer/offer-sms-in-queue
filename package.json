@@ -1,6 +1,6 @@
 {
-  "name": "serverless-sample",
-  "version": "0.0.0",
+  "name": "offer-sms-in-queue",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

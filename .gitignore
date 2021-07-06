@@ -119,3 +119,4 @@ dist
 
 # dev stuff
 notes.txt
+.env.sample

@@ -12,9 +12,13 @@ const getSyncDoc = (client, syncSvcSid, uniqueName) => {
   return client.sync.services(syncSvcSid).documents(uniqueName).fetch();
 };
 
+const logTwiML = (twiml) => {
+  console.log(twiml.toString());
+};
+
 exports.handler = async function(context, event, callback) {
   const FN_NAME='waitTreatment';
-  //console.log(`${FN_NAME}: event`, event);
+  //console.log(`${FN_NAME}: event:`, event);
   const {
     DOMAIN_NAME: RAW_DOMAIN_NAME,
     NGROK_SUBDOMAIN,
@@ -99,10 +103,12 @@ exports.handler = async function(context, event, callback) {
       default:
         twiml.redirect(`https://${DOMAIN_NAME}/waitTreatment?state=initial${deptParam}`)
     }
+    console.log(`${FN_NAME}: twiml:`);
+    logTwiML(twiml);
     callback(null, twiml);  
   }
   catch (err) {
-    console.error(`${FN_NAME}: error`, error);
+    console.error(`${FN_NAME}: error:`, err);
     callback(err, null);  
   }
 };
